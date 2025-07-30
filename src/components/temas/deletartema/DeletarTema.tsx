@@ -25,7 +25,7 @@ function DeletarTema() {
                 }
             })
         } catch (error: any) {
-            if (error.toString().includes('403')) {
+            if (error.toString().includes('401')) {
                 handleLogout()
             }
         }
@@ -57,7 +57,7 @@ function DeletarTema() {
             alert('Tema apagado com sucesso!')
 
         } catch (error: any) {
-            if (error.toString().includes('403')) {
+            if (error.toString().includes('401')) {
                 handleLogout()
             }else {
                 alert('Erro ao deletar o tema :/.')
