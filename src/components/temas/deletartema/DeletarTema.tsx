@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../../contexts/AuthContext"
 import type Tema from "../../../models/Tema"
 import { buscar, deletar } from "../../../services/Service"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function DeletarTema() {
 
@@ -33,7 +34,7 @@ function DeletarTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado')
+            ToastAlerta("Tu precisa estar logado...", "info");
             navigate('/')
         }
     }, [token])
@@ -54,13 +55,13 @@ function DeletarTema() {
                 }
             })
 
-            alert('Tema apagado com sucesso!')
+            ToastAlerta("Tema deletado com sucesso meu amigo!", "sucesso")
 
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
             }else {
-                alert('Erro ao deletar o tema :/.')
+                ToastAlerta("Deu erro enquanto deletava o tema... :/", "erro")
             }
         }
 
